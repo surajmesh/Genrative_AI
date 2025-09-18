@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Fit Driver Recommendation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #responseContainer {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="font-size: 28px; font-weight: bold; color: #ff000d; text-align: center; margin: 20px 0;">
+        Best-Fit Driver Recommendation System
+    </h2>    
+    <h2 style="font-size: 18px;">
+        Get Matched with the Right Driver for Your Needs
+    </h2>
+    <form id="driverForm">
+        <!-- <label>Hazmat required (Yes/No)?</label>
+        <select name="hazmat" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select> -->
+        
+        <label>Enter your task or requirement</label>
+        <input type="text" name="equipment" required> 
+<!--         
+        <label>License state?</label>
+        <input type="text" name="licenseState" required>
+        
+        <label>License date before (YYYY-MM-DD)?</label>
+        <input type="date" name="licenseDate" required> -->
+        
+        <label>Load origin?</label>
+        <input type="text" name="loadOrigin" required>
+        
+        <label>Load destination?</label>
+        <input type="text" name="loadDestination" required>
+        
+        <!-- <label>Driver current location?</label>
+        <input type="text" name="driverLocation" required>
+        
+        <label>Medical certification valid (Yes/No)?</label>
+        <select name="medicalCert" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select> -->
+        
+        <!-- <label>Preferred city?</label>
+        <input type="text" name="preferredCity">
+         -->
+        <!-- <label>Preferred state?</label>
+        <input type="text" name="preferredState"> -->
+        
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="responseContainer"></div>
+
+    <script>
+        document.getElementById("driverForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+            const parameters = {};
+            
+            formData.forEach((value, key) => {
+                parameters[key] = value;
+            });
+
+            try {
+                const response = await fetch("/best_fit_driver_suggestion", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ parameters })
+                });
+
+                const result = await response.json();
+                const responseContainer = document.getElementById("responseContainer");
+
+                if (response.ok) {
+                    responseContainer.innerHTML = `<strong>Recommendation:</strong> ${result.recommendation}`;
+                } else {
+                    responseContainer.innerHTML = `<strong>Error:</strong> ${result.error || "An error occurred."}`;
+                }
+
+                responseContainer.style.display = "block";
+            } catch (error) {
+                console.error("Error:", error);
+                document.getElementById("responseContainer").innerHTML = "<strong>Error:</strong> Failed to fetch recommendation.";
+                document.getElementById("responseContainer").style.display = "block";
+            }
+        });
+    </script>
+</body>
+</html>
