@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../static/css/bootstrap.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../static/css/style.css">
+  <style>
+    .custom-cl {
+      height: 100vh;
+      background-color: #dee2e696;
+    }
+
+    .form-child {
+      min-height: 609px;
+      max-height: 603px;
+      width: 70%;
+      border-radius: 15px;
+      background-color: #e1e1e1;
+      border: 1px solid #8080805c;
+      padding: 15px;
+    }
+
+    input.form-control {
+      border: 1px solid grey;
+      border-radius: 8px;
+      height: 52px;
+      background: transparent;
+    }
+
+    select.form-control {
+      border: 1px solid grey;
+      border-radius: 8px;
+      min-height: 51px;
+      max-height: 46px;
+      height: 52px;
+      background: transparent;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <!-- Navigation Bar  -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top" style="background-color: #1C00ff00;">
+    <div class="container">
+      <a class="navbar-brand" href="./index.html">
+        <img src="../static/images/logo.jpg" style="width: 90px; height: 55px" alt="">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="./index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./crop.html">Crop</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="  border rounded-3 w-50  p-2 w-100 custom-cl d-flex justify-content-center align-items-center">
+    <div class="form-child">
+      <form method="POST" action="{{ url_for('predict') }}">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="N" style="font-size: 17px"><b>Nitrogen</b></label>
+              <input type="number" class="form-control" id="N" name="N" placeholder="Enter the value (example:50)"
+                style="font-weight: bold" required />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="P" style="font-size: 17px"><b>P</b></label>
+              <input type="number" class="form-control" id="Phosphorous" name="P"
+                placeholder="Enter the value (example:50)" style="font-weight: bold" required />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="K" style="font-size: 17px"><b>K</b></label>
+              <input type="number" class="form-control" id="K" name="K" placeholder="Enter the value (example:50)"
+                style="font-weight: bold" required />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="temperature" style="font-size: 17px"><b>temperature</b></label>
+              <input type="number" step="0.01" class="form-control" id="temperature" name="temperature"
+                placeholder="Enter the value" style="font-weight: bold" required />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group m-0">
+              <label for="humidity" style="font-size: 17px"><b>humidity (in mm)</b></label>
+              <input type="number" step="0.01" class="form-control" id="humidity" name="humidity"
+                placeholder="Enter the value" style="font-weight: bold" required />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="ph" style="font-size: 17px"><b>pH</b></label>
+              <input type="number" step="0.01" class="form-control" id="ph" name="ph"
+                placeholder="Enter the pH value (example:6.5)" style="font-weight: bold" required />
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="rainfall" style="font-size: 17px"><b>rainfall</b></label>
+                <input type="number" step="0.01" class="form-control" id="rainfall" name="rainfall"
+                  placeholder="Enter the rainfall
+                  
+                  
+                  
+                  
+                  
+                  
+                  value (example:6.5)" style="font-weight: bold" required />
+              </div>
+              <br />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <!-- Optional City Dropdown -->
+          </div>
+        </div>
+        <div class="d-flex justify-content-center mt-4">
+          <button class="btn btn-info" type="submit" value="submit" style="
+                  color: black;
+                  font-weight: bold;
+                  width: 130px;
+                  height: 50px;
+                  border-radius: 12px;
+                  font-size: 21px;
+                ">
+            Predict
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  </div>
+  <!-- <form action="">
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    </div>
+  </form> -->
+  </div>
+
+
+  <!-- footer -->
+  <footer class="text-center py-5">
+    <div class="container py-md-3">
+      <!-- logo -->
+      <h2 class="logo2 text-center">
+        <a href="{{ url_for('home') }}">
+        </a>
+      </h2>
+      <!-- //logo -->
+      <!-- address -->
+      <div class="contact-left-footer mt-4">
+
+
+
+
+
+        <!-- <a href="community.html">Community</a> -->
+        </p>
+      </div>
+      <div class="w3l-copy text-center">
+        <p class="text-da">🌾 Crop Recommendation System 🌾<br> </p>
+      </div>
+      <p class="homelogo">
+      <p>Developed by Suraj Meshram ❤️</p>
+      <p> Department of Scientific Computing & Modeling Simulation , Pune University</p>
+      <p>&copy; Copyright 2021 </p>
+
+    </div>
+  </footer>
+  <!-- //footer -->
+
+
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Prediction</title>
+    <style>
+        /* Banner styling */
+        .banner_w3lspvt {
+            position: relative;
+            background-color: #4CAF50; /* Green background for the banner */
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            width: 100%; /* Ensures the banner stretches full width */
+        }
+
+        .banner-top .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4); /* Overlay effect */
+        }
+
+        .w3layouts-banner-info {
+            position: relative;
+            z-index: 1;
+            max-width: 100%; /* Ensures full width */
+        }
+
+        .container {
+            max-width: 100%; /* Ensures the container takes full width */
+            padding: 0 15px; /* Adds padding for better readability */
+        }
+
+        .w3layouts-banner-info h3 {
+            font-family: Arial, sans-serif;
+            font-size: 48px;
+            margin: 0;
+        }
+
+        .w3layouts-banner-info p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin: 20px 0;
+        }
+
+        /* Form styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        form {
+            width: 60%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Footer styling */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Banner Section -->
+    <section class="banner_w3lspvt" id="home">
+        <div class="csslider infinity" id="slider1">
+            <div class="banner-top">
+                <div class="overlay">
+                    <div class="container">
+                        <div class="w3layouts-banner-info text-center">
+                            <h3 class="text-wh">Crop Recommendation System</h3>
+                            <h4 class="text-wh mx-auto my-4"><strong>Here are some questions we'll answer</strong></h4>
+                            <p class="text-li mx-auto mt-2">
+                                The Crop Recommendation System is an innovative project designed to help farmers and agricultural researchers optimize crop cultivation using Artificial Intelligence (AI) and Machine Learning (ML). By analyzing critical soil parameters such as Nitrogen (N), Phosphorus (P), Potassium (K), and pH levels, along with environmental factors like temperature, humidity, and rainfall, the system provides accurate, data-driven recommendations for selecting the most suitable crops for specific regions. This approach aims to improve agricultural productivity, promote sustainable farming practices, and ensure that crops are grown in the most favorable soil and weather conditions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <h1>Enter Crop Details</h1>
+    <form action="/predict" method="post">
+        <label for="N">Nitrogen (N):</label>
+        <input type="text" name="N" required><br><br>
+
+        <label for="P">Phosphorous (P):</label>
+        <input type="text" name="P" required><br><br>
+
+        <label for="K">Potassium (K):</label>
+        <input type="text" name="K" required><br><br>
+
+        <label for="temperature">Temperature:</label>
+        <input type="text" name="temperature" required><br><br>
+
+        <label for="humidity">Humidity:</label>
+        <input type="text" name="humidity" required><br><br>
+
+        <label for="ph">pH:</label>
+        <input type="text" name="ph" required><br><br>
+
+        <label for="rainfall">Rainfall:</label>
+        <input type="text" name="rainfall" required><br><br>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Crop Recommendation System | All rights reserved</p>
+    </footer>
+
+</body>
+</html>
